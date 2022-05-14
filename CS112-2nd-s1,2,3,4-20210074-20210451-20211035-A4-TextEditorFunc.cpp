@@ -270,44 +270,6 @@ void countWords()
 
 }
 
-void countWordFile()
-{
-    // Initialize Variables
-    ifstream file;
-    string fileName;
-    string word;
-    string keyword;
-    int count = 0;
-
-    // Ask For File Name
-    cout << "Please Enter An Existing File Name: ";
-    cin >> fileName;
-
-    // Ask For Word
-    cout << "Please Enter the Word: ";
-    cin >> keyword;
-
-    // Open The File Or Fail
-    file.open(fileName, ios::in);
-    if (file.fail())
-    {
-        cout << "__Failed To Open file!__";
-    }
-    else
-    {
-        while (!file.eof())
-        {
-            file >> word;
-            if (word == keyword)
-            {
-                count++;
-            }
-        }
-        cout << "Number of words in file are: " << count << endl
-             << endl;
-    }
-    file.close();
-}
 
 void countCharacters()
 {
@@ -360,6 +322,91 @@ void countLines()
     cout<<"\n_____________________________\n";
 
 }
+
+void wordsearch()
+{
+    string input_file,wordToFind,line;
+    while (1)
+    {
+        int line_Number=0,found=0;
+        cout<<"\n\nFile: ";
+        getline(cin,input_file);
+        cout<<"\nWord to find: ";
+        getline(cin,wordToFind);
+        ifstream file(input_file.c_str());
+        if(file)
+        {
+            while(getline(file,line))
+            {
+                line_Number++;
+                int position=0;
+                for(int i=line.find(wordToFind); i<line.length(); i=i+position)
+                {
+                    position=line.find(wordToFind,i);
+                    if(position != string::npos)
+                    {
+                        cout<<endl<<wordToFind<<" is at "<<line_Number<<":"<<position<<endl;
+                        found=1;
+                        break;
+                    }
+                    else
+                        break;
+                }
+            }
+            file.close();
+            if(found==0)
+            {
+                cout<<endl<<wordToFind<<" not in file"<<endl;
+            }
+        }
+            else //if file provided is not available.
+            {
+                cout<<endl<<input_file<<" not found" <<endl;
+            }
+        _getch();
+    }
+    return 0;
+ }
+
+void countWordFile()
+{
+    // Initialize Variables
+    ifstream file;
+    string fileName;
+    string word;
+    string keyword;
+    int count = 0;
+
+    // Ask For File Name
+    cout << "Please Enter An Existing File Name: ";
+    cin >> fileName;
+
+    // Ask For Word
+    cout << "Please Enter the Word: ";
+    cin >> keyword;
+
+    // Open The File Or Fail
+    file.open(fileName, ios::in);
+    if (file.fail())
+    {
+        cout << "__Failed To Open file!__";
+    }
+    else
+    {
+        while (!file.eof())
+        {
+            file >> word;
+            if (word == keyword)
+            {
+                count++;
+            }
+        }
+        cout << "Number of words in file are: " << count << endl
+             << endl;
+    }
+    file.close();
+}
+
 
 void lowerCaseFile()
 {
