@@ -19,6 +19,7 @@ bool Check_fullNameValidation();
 bool Check_PhoneNumberValidation();
 bool Check_emailValidation();
 bool Check_UserNameValidation();
+bool isValid(string password);
 
 void Registration();
 void userName();
@@ -309,4 +310,147 @@ void loadAccount()
     }
     File.close();
 }
+bool isValid(string password)
+{
+
+    // For checking if password length
+    // is between 8 and 15
+    if (!((password.length() >= 8) &&
+          (password.length() <= 15)))
+        return false;
+
+    // To check space
+    if (password.find(" ") !=
+        std::string::npos)
+        return false;
+
+    if (true)
+    {
+        int count = 0;
+
+        // Check digits from 0 to 9
+        for(int i = 0; i <= 9; i++)
+        {
+
+            // To convert int to string
+            string str1 = to_string(i);
+
+            if (password.find(str1) !=
+                std::string::npos)
+                count = 1;
+        }
+        if (count == 0)
+            return false;
+    }
+
+    // For special characters
+    if (!((password.find("@") != std::string::npos) ||
+          (password.find("#") != std::string::npos) ||
+          (password.find("!") != std::string::npos) ||
+          (password.find("~") != std::string::npos) ||
+          (password.find("$") != std::string::npos) ||
+          (password.find("%") != std::string::npos) ||
+          (password.find("^") != std::string::npos) ||
+          (password.find("&") != std::string::npos) ||
+          (password.find("*") != std::string::npos) ||
+          (password.find("(") != std::string::npos) ||
+          (password.find(")") != std::string::npos) ||
+          (password.find("-") != std::string::npos) ||
+          (password.find("+") != std::string::npos) ||
+          (password.find("/") != std::string::npos) ||
+          (password.find(":") != std::string::npos) ||
+          (password.find(".") != std::string::npos) ||
+          (password.find(",") != std::string::npos) ||
+          (password.find("<") != std::string::npos) ||
+          (password.find(">") != std::string::npos) ||
+          (password.find("?") != std::string::npos) ||
+          (password.find("|") != std::string::npos)))
+        return false;
+
+    if (true)
+    {
+        int count = 0;
+
+        // Checking capital letters
+        for(int i = 65; i <= 90; i++)
+        {
+
+            // Type casting
+            char c = (char)i;
+            string str1(1, c);
+
+            if (password.find(str1) !=
+                std::string::npos)
+                count = 1;
+        }
+        if (count == 0)
+            return false;
+    }
+
+    if (true)
+    {
+        int count = 0;
+
+        // Checking small letters
+        for(int i = 97; i <= 122; i++)
+        {
+
+            // Type casting
+            char c = (char)i;
+            string str1(1, c);
+
+            if (password.find(str1) !=
+                std::string::npos)
+                count = 1;
+        }
+        if (count == 0)
+            return false;
+    }
+
+    // If all conditions fails
+    return true;
+}
+int main()
+{
+    cout<<"your password must be from 8 to 15 letter with at least 1 capital letter, without space,has at least 1 number,and at least 2 symbol"<<endl;
+    int ch;
+    string password , password2 ;
+    cout<<"Please Enter Your Password : "<<endl;
+    ch=getch();
+
+    while(ch!=13)
+    {
+        password.push_back(ch);
+        cout<< '*';
+        ch =getch();
+    }
+
+
+    if (isValid(password)){
+        cout <<'\n'<< "Valid Password" << endl;
+
+
+    cout<<"Please repeat Your password "<<endl;
+    ch=getch();
+
+
+     while(ch!=13)
+    {
+        password2.push_back(ch);
+        cout<< '*' ;
+        ch =getch();
+    }
+
+    if (password==password2)
+        cout<<'\n'<<"your password is valid "<<endl;
+    else
+        cout<<'\n'<<"Not same password please try again "<<endl;
+    }
+    else
+        cout<<'\n'<<"Invalid Password" << endl;
+
+
+
+}
+
 
