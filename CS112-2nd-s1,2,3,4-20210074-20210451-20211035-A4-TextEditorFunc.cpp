@@ -542,11 +542,13 @@ void save()
     currentFile.open(currentFileName);
     newFile.open(newFileName);
 
-    if (currentFile.fail()) {
+    if (currentFile.fail())
+    {
         cout << "__Failed To Open file!__\n";
     }
 
-    while (!currentFile.eof()) {
+    while (!currentFile.eof())
+    {
         charcterPlaceholder = currentFile.get();
         cout << endl << charcterPlaceholder << endl;
         newFile.put(charcterPlaceholder);
@@ -554,12 +556,7 @@ void save()
     cout << "\nDone\n";
     currentFile.close();
     newFile.close();
-<<<<<<< HEAD
-}
-=======
-=======
-    
->>>>>>> 8856e0623a27fbcbeb5a20af6290174a316c1090
+
 }
 
->>>>>>> 2b4c51549417e047fcadb5289cf06be8ea069418
+
