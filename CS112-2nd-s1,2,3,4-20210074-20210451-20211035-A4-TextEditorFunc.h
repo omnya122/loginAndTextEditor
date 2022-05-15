@@ -22,4 +22,10 @@ void capitalCaseFile();
 void save();
 int wordSearch();
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8856e0623a27fbcbeb5a20af6290174a316c1090
+>>>>>>> 2b4c51549417e047fcadb5289cf06be8ea069418
 #endif
