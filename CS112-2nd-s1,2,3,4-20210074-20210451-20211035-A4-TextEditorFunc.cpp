@@ -1,8 +1,9 @@
 #include "CS112-2nd-s1,2,3,4-20210074-20210451-20211035-A4-TextEditorFunc.h"
+
 void addNewText()
 {
     string fileName;
-    cout << "Please Enter The File Name: ";
+    cout << "Please Enter The File Name:\n ";
     cin >> fileName;
     fstream file;
 
@@ -11,13 +12,13 @@ void addNewText()
     if (file.is_open())
     {
         string lines;
-        cout << "Please Enter The Text you'd like to add: ";
+        cout << "Please Enter The Text you'd like to add: \n";
         getline(cin >> ws, lines, '\0');
         file << lines << endl;
     }
     else
     {
-        cout << "Can not open file!\n Please enter an existing file.";
+        cout << "Can not open file!\n Please enter an existing file.\n";
     }
     file.close();
 }
@@ -25,12 +26,12 @@ void displayFile()
 {
     fstream file;
     char fileName[81];
-    cout << "Please Enter An Existing File Name: ";
+    cout << "Please Enter An Existing File Name: \n";
     cin >> fileName;
     file.open(fileName, ios::in);
     if (file.fail())
     {
-        cout << "Failed To Open file!";
+        cout << "Failed To Open file!n\n";
     }
     else
     {
@@ -47,8 +48,8 @@ void displayFile()
         }
         // Close The File
         file.close();
-        cout << "____________________________\n";
-        cout << "File was Displayed Successfully!";
+        cout << "________________________________\n";
+        cout << "File was Displayed Successfully!\n";
     }
 }
 void emptyFile()
@@ -68,7 +69,7 @@ void emptyFile()
     }
     else
     {
-        cout << "Can not open file!";
+        cout << "Can not open file!\n";
     }
 }
 
@@ -81,7 +82,7 @@ void encryptFile()
     file.open(fileName, ios::in);
     if (file.fail())
     {
-        cout << "Failed To Open file!";
+        cout << "Failed To Open file!\n";
     }
     else
     {
@@ -121,7 +122,7 @@ void encryptFile()
         }
         file << encrypted << endl;
         cout << "__File was encrypted Successfully!__";
-        cout << "\n____________________________";
+        cout << "\n_____________________________________";
         // close the file.
         file.close();
     }
@@ -181,7 +182,7 @@ void decryptFile()
         file << decrypted << endl;
 
         cout << "__File was decrypted Successfully!__";
-        cout << "\n____________________________________";
+        cout << "\n_____________________________________";
 
         // close the file.
         file.close();
@@ -270,44 +271,6 @@ void countWords()
 
 }
 
-void countWordFile()
-{
-    // Initialize Variables
-    ifstream file;
-    string fileName;
-    string word;
-    string keyword;
-    int count = 0;
-
-    // Ask For File Name
-    cout << "Please Enter An Existing File Name: ";
-    cin >> fileName;
-
-    // Ask For Word
-    cout << "Please Enter the Word: ";
-    cin >> keyword;
-
-    // Open The File Or Fail
-    file.open(fileName, ios::in);
-    if (file.fail())
-    {
-        cout << "__Failed To Open file!__";
-    }
-    else
-    {
-        while (!file.eof())
-        {
-            file >> word;
-            if (word == keyword)
-            {
-                count++;
-            }
-        }
-        cout << "Number of words in file are: " << count << endl
-             << endl;
-    }
-    file.close();
-}
 
 void countCharacters()
 {
@@ -361,6 +324,93 @@ void countLines()
 
 }
 
+int wordSearch()
+{
+    string input_file,wordToFind,line;
+    while (1)
+    {
+        int line_Number=0,found=0;
+        cout<<"\n\nFile: ";
+        getline(cin,input_file);
+        cout<<"\nWord to find: ";
+        getline(cin,wordToFind);
+        ifstream file(input_file.c_str());
+        if(file)
+        {
+            while(getline(file,line))
+            {
+                line_Number++;
+                int position=0;
+                for(int i=line.find(wordToFind); i<line.length(); i=i+position)
+                {
+                    position=line.find(wordToFind,i);
+                    if(position != string::npos)
+                    {
+                        cout<<endl<<wordToFind<<" is at "<<line_Number<<":"<<position<<endl;
+                        found=1;
+                        break;
+                    }
+                    else
+                        break;
+                }
+
+            }
+            file.close();
+            if(found==0)
+            {
+                cout<<endl<<wordToFind<<" not in file"<<endl;
+            }
+        }
+        else //if file provided is not available.
+        {
+            cout<<endl<<input_file<<" not found" <<endl;
+        }
+        _getch();
+        return 0;
+    }
+
+}
+
+void countWordFile()
+{
+    // Initialize Variables
+    ifstream file;
+    string fileName;
+    string word;
+    string keyword;
+    int count = 0;
+
+    // Ask For File Name
+    cout << "Please Enter An Existing File Name: ";
+    cin >> fileName;
+
+    // Ask For Word
+    cout << "Please Enter the Word: ";
+    cin >> keyword;
+
+    // Open The File Or Fail
+    file.open(fileName, ios::in);
+    if (file.fail())
+    {
+        cout << "__Failed To Open file!__";
+    }
+    else
+    {
+        while (!file.eof())
+        {
+            file >> word;
+            if (word == keyword)
+            {
+                count++;
+            }
+        }
+        cout << "Number of words in file are: " << count << endl
+             << endl;
+    }
+    file.close();
+}
+
+
 void lowerCaseFile()
 {
     // Initialize Variables
@@ -392,11 +442,11 @@ void lowerCaseFile()
             }
             cout << word;
             cout << endl;
-            }
-            cout << "=========================\n";
         }
-        file.close();
+        cout << "=========================\n";
     }
+    file.close();
+}
 
 void upperCaseFile()
 {
@@ -432,7 +482,7 @@ void upperCaseFile()
             cout << endl;
         }
     }
-        file.close();
+    file.close();
 }
 
 void capitalCaseFile()
@@ -443,14 +493,14 @@ void capitalCaseFile()
     string word;
 
     // Ask For File Name
-    cout << "Please Enter An Existing File Name: ";
+    cout << "Please Enter An Existing File Name:\n ";
     cin >> fileName;
 
     // Open The File Or Fail
     file.open(fileName, ios::in);
     if (file.fail())
     {
-        cout << "__Failed To Open file!__";
+        cout << "__Failed To Open file!__\n";
     }
     else
     {
@@ -464,15 +514,15 @@ void capitalCaseFile()
             {
                 if (i == 0 && word[i] >= 'a' && word[i] <= 'z') // check for uppercase chars
                     word[i] = word[i] - 32;                     // convert uppercase into lowercase
-                    if (i != 0 && word[i] >= 'A' && word[i] <= 'Z') // check for uppercase chars
-                        word[i] = word[i] + 32;                     // convert uppercase into lowercase
-                }
-                cout << word;
-                cout << endl;
+                if (i != 0 && word[i] >= 'A' && word[i] <= 'Z') // check for uppercase chars
+                    word[i] = word[i] + 32;                     // convert uppercase into lowercase
             }
+            cout << word;
+            cout << endl;
         }
-        file.close();
     }
+    file.close();
+}
 void save()
 {
     ifstream currentFile;
@@ -482,31 +532,26 @@ void save()
     char charcterPlaceholder;
 
     // Ask For File Name
-    cout << "Please Enter An Existing File Name: ";
+    cout << "Please Enter An Existing File Name:\n ";
     cin >> currentFileName;
 
     // Ask For File Name
-    cout << "Please Enter the new File Name: ";
+    cout << "Please Enter the new File Name: \n";
     cin >> newFileName;
 
     currentFile.open(currentFileName);
     newFile.open(newFileName);
 
-    if (currentFile.fail())
-    {
-        cout << "__Failed To Open file!__";
+    if (currentFile.fail()) {
+        cout << "__Failed To Open file!__\n";
     }
-<<<<<<< HEAD
-    while (!currentFile.eof())
-    {
+
+    while (!currentFile.eof()) {
         charcterPlaceholder = currentFile.get();
-        cout << endl<< charcterPlaceholder << endl;
+        cout << endl << charcterPlaceholder << endl;
         newFile.put(charcterPlaceholder);
     }
     cout << "\nDone\n";
     currentFile.close();
     newFile.close();
-=======
-    
->>>>>>> 8856e0623a27fbcbeb5a20af6290174a316c1090
 }

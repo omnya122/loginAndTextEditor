@@ -2,7 +2,7 @@
 // Program Name: CS112-2nd-s3,4,1,2-20210074-20210451-20211035-A4-TextEditor.cpp
 // Last Modification Date: 10/5/2022
 // Author1 and ID and Group: Omnya Ahmed Mohamed (20210074)
-// Author2 and ID and Group: Doaa Mohamed (20211035)
+// Author2 and ID and Group: Doaa Mohamed  (20211035)
 // Author3 and ID and Group: Yassin Yasser (20210451)
 // Teaching Assistant: Nesma mohamed
 // Purpose: program for displaying and manipulating text files.
@@ -14,7 +14,7 @@ int main()
     {
         string order;
         // Help message
-        cout << "____Welcome To Our Text Editor :)_____ \n1.Add new text to the end of the file.\n2.Display the content of the file."
+        cout << "\n\n____Welcome To Our Text Editor :)_____ \n1.Add new text to the end of the file.\n2.Display the content of the file."
                 "\n3.Empty the file.\n4.Encrypt the file content.\n5.Decrypt the file content\n6.Merge another file\n"
                 "7. Count the number of words in the file.\n8. Count the number of characters in the file\n"
                 "9. Count the number of lines in the file\n10. Search for a word in the file\n"
@@ -102,13 +102,7 @@ int main()
         if (order == "16")
         {
             return 0;
-        
+
         }
     }
 }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 8856e0623a27fbcbeb5a20af6290174a316c1090

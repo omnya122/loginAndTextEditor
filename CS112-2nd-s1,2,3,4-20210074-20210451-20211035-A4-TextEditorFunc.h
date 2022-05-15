@@ -3,7 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <conio.h>
 using namespace std;
+
 void addNewText();
 void displayFile();
 void emptyFile();
@@ -13,15 +15,11 @@ void mergeFile();
 void countWords();
 void countCharacters();
 void countLines();
-void wordSearch();
 void countWordFile();
 void upperCaseFile();
 void lowerCaseFile();
 void capitalCaseFile();
 void save();
-<<<<<<< HEAD
-=======
+int wordSearch();
 
-
->>>>>>> 8856e0623a27fbcbeb5a20af6290174a316c1090
 #endif
