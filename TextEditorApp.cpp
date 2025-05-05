@@ -1,6 +1,6 @@
 
 // Purpose: program for displaying and manipulating text files.
-#include "CS112-2nd-s1,2,3,4-20210074-20210451-20211035-A4-TextEditorFunc.h"
+#include "TextEditorFunc.h"
 
 int main()
 {
