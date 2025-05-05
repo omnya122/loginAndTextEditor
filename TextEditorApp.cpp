@@ -1,10 +1,4 @@
-// FCAI – Programming 1 – 2022 - Assignment 4
-// Program Name: CS112-2nd-s3,4,1,2-20210074-20210451-20211035-A4-TextEditor.cpp
-// Last Modification Date: 10/5/2022
-// Author1 and ID and Group: Omnya Ahmed Mohamed (20210074)
-// Author2 and ID and Group: Doaa Mohamed  (20211035)
-// Author3 and ID and Group: Yassin Yasser (20210451)
-// Teaching Assistant: Nesma mohamed
+
 // Purpose: program for displaying and manipulating text files.
 #include "CS112-2nd-s1,2,3,4-20210074-20210451-20211035-A4-TextEditorFunc.h"
 
